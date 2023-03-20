@@ -10,8 +10,11 @@ namespace FizzBuzz.Pages
         [BindProperty]
         public FizzBuzzForm FizzBuzz
         {
-            set; get;
-        }
+            get; set;
+
+        } = new FizzBuzzForm();
+
+
         [BindProperty(SupportsGet = true)]
         public string Name { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
@@ -28,6 +31,10 @@ namespace FizzBuzz.Pages
         }
         public IActionResult OnPost()
         {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                Name = "User";
+            }
             if (!ModelState.IsValid)
             {
                 return Page();

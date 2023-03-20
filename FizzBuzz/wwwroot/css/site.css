@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+.fizzbuzz-number input{
+margin-top:10px;
+}
+.fizzbuzz-number button{
+    margin-top:10px;
+}
+.fizzbuzz-number .alert{
+    margin-top:10px;
+}

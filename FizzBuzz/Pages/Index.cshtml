@@ -4,14 +4,42 @@
     ViewData["Title"] = "Fizz Buzz";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome @Model.Name</h1>
+<div class="fizzbuzz-number">
+    <h1 class="display-4">Welcome @Model.Name</h1>  
     <form method="post">
-        <label asp-for="FizzBuzz.Number"></label>
-        <input asp-for="FizzBuzz.Number" /><br />
-        <button type="submit">Zatwierdź</button>
+        <div class="form-group">
+            <label asp-for="FizzBuzz.Number"></label>
+            <input asp-for="FizzBuzz.Number" class="form-control" placeholder="Number" />
+            <button type="submit" class="btn btn-primary">Zatwierdź</button>
+        </div>
     </form>
-    <span asp-validation-for="FizzBuzz.Number" class="text-danger"></span>
+        <span asp-validation-for="FizzBuzz.Number" class="text-danger"></span>
+    @if (Model.FizzBuzz.Number != null && Model.FizzBuzz.Number >= 1 && Model.FizzBuzz.Number <= 2000)
+    {
+        @if (Model.FizzBuzz.Number % 3 == 0 && Model.FizzBuzz.Number % 5 == 0)
+        {
+            <div class="alert alert-success" role="alert">
+                FizzBuzz
+            </div>
+        }
+        else if (Model.FizzBuzz.Number % 3 == 0)
+        {
+            <div class="alert alert-success" role="alert">
+                Fizz
+            </div>
+        }
+        else if (Model.FizzBuzz.Number % 5 == 0)
+        {
+            <div class="alert alert-success" role="alert">
+                Buzz
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                Liczba: @Model.FizzBuzz.Number nie spełnia kryteriów FizzBuzz
+            </div>
+        }
 
-
+    }
 </div>
